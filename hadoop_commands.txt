@@ -1,0 +1,26 @@
+Make Directory
+hdfs dfs -mkdir /input
+
+Put file
+hdfs dfs -put file.txt /input
+
+List Directory
+hadoop fs -ls /input/
+
+Print content of file
+hadoop dfs -cat /input/file.txt
+
+Execute Jar
+hadoop jar WordCount.jar WordCountDriver /data/wc_demo.txt /output
+
+Show output
+hadoop dfs -cat /output_dir/*
+
+Leave Safemode
+hadoop dfsadmin –safemode leave
+
+Remove file from a directory
+hadoop fs -rm -r /input/input_file.txt
+
+Remove directory
+hadoop fs -rm -r /input
