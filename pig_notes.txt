@@ -1,0 +1,70 @@
+PIG
+- in map-reduce if we write 200 lines of code than in PIG the same problem could be solved in 10 line of code
+
+Map Reduce vs Pig
+- Pig is a high-level data flow language whereas MapReduce is a low level data processing paradigm
+- Pig doesn't need any programming to be implemented but MapReduce needs a programming
+- Pig uses multi-query approach and that helps to reduce line of code
+- Pig support built-in operators for grouping, filtering of data, sorting...also we can perform joins
+
+What is PIG ?
+- Pig is a platform that we use to analyze huge amount of data and data could be structured or semi-structured
+- It is designed as an abstraction layer over MapReduce
+- Pig has 2 major components
+  - Pig Latin - pig provides data flow language known as Pig Latin
+  - Pig Run-time environment
+- We can also build UDF - User Defined Functions
+- Pig is majorly used for ETL - Extract Transform and Load
+
+Use Cases of PIG
+- Web logs
+- Streaming online data
+
+Example 
+- Yahoo uses pig for 40% of their jobs like news feed, search engine
+- Twitter also uses PIG
+   - twitter was growing at rate of 10TB/day and decided to move to HDFS
+      - how many request twitter serve per day ?
+      - how many search happens each day
+
+Now twitter wanted to analyze how many tweets are stored per user
+
+MapReduce inputs the key as row and send tweet table info. to mapper function
+Mapper function selects the user_id and associated unit to every user_id.
+Reduce function will add all the no of tweets together belonging to same user...
+
+Problems twitter faced
+- analysis of data needs to be done using Java
+- Joins are also performed using Java
+- Filters and projections also needs to be coded in Java
+
+So finally Twitter move to Pig for Analysis Purpose
+
+Grunt Shell : Pig's interactive shell to execute Pig Scripts
+Script File : Pig commands could be stored in a script file and later we can execute all commands using script file
+Parser - Parser does type checking and checks the syntax of script
+Optimizer - Optimize the queries or performance of queries
+Compiler - Compiles the optimized code into series of map reduce jobs. In this step pig scripts are automatically converted into Map Reduce Jobs
+Execution Engine - Now Mapreduce jobs are executed using commands like DUMP and can be stored in HDFS using STORE command
+
+Data Types of PIG
+- Bag
+- Tuple
+- Map
+- Integer
+- Long
+- Float
+- Double
+- Chararray
+- Bytearray
+
+
+
+
+
+
+
+
+
+
+
