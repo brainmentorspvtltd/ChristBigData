@@ -1,0 +1,14 @@
+1. Visit for PIG - https://downloads.apache.org/pig/latest/
+   Downlad - pig-0.17.0.tar.gz 
+2. Extract
+3. Set path in environment variable
+   add new variable PIG_HOME=C:\pig-0.17.0
+   add path C:\pig-0.17.0\bin
+4. Edit pig.cmd in C:\pig-0.17.0\bin 
+   Old Value - set HADOOP_BIN_PATH=%HADOOP_HOME%\bin
+   New Value - set HADOOP_BIN_PATH=%HADOOP_HOME%\libexec
+5. Open cmd and type :
+   pig -version
+6. Now type :
+   pig
+
