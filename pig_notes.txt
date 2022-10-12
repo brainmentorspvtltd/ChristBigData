@@ -59,7 +59,38 @@ Data Types of PIG
 - Bytearray
 
 
+Start Pig in local mode
+-> pig -x local
 
+
+Load Data
+data = LOAD 'D:/Datasets/BI Datasets/olympics/summer.csv' using PigStorage(',') as (Year:chararray, City:chararray, Sport:chararray, Discipline:chararray, Athlete:chararray, Country:chararray, Gender:chararray, Event:chararray, Medal:chararray);
+
+Print/Show Data
+dump data;
+
+Fetch first 5 observations
+first_5 = LIMIT data 5;
+
+dump first_5;
+
+Filter Data
+gold_data = filter data by Medal == 'Gold';
+gold_first_5 = LIMIT gold_data 5;
+
+
+group_data = GROUP gold_data by Athlete;
+gold_count = FOREACH group_data GENERATE group as athlete_count, COUNT(gold_data.Medal) as MedalCount;
+
+
+Sorting data
+sorted_count = ORDER gold_count BY MedalCount DESC;
+top_5 = LIMIT sorted_count 5;
+
+
+
+Q1 : Most medals won by female athlete
+Q2 : Total medals won by India
 
 
 
