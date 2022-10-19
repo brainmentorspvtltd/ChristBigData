@@ -1,0 +1,80 @@
+HIVE
+
+1. Create Database
+create database db_name;
+create database if not exist db_name;
+
+2. Create Table
+
+CREATE TABLE [IF NOT EXISTS] table_name (col_name data type, col_name data type..) 
+COMMENT 'This table contains Student Details' 
+ROW FORMAT DELIMITED 
+FIELDS TERMINATED BY '\t' 
+LINES TERMINATED BY '\n' 
+STORED AS TEXTFILE
+
+
+CREATE TABLE IF NOT EXISTS students (roll_no int, name String, college String, branch String) COMMENT 'This table contains Student Details' ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t' LINES TERMINATED BY '\n' STORED AS TEXTFILE;
+
+
+3. Alter Table
+
+Rename Table
+Syntax : ALTER TABLE table_name RENAME TO new_name;
+Example : ALTER TABLE students RENAME TO students_details;
+
+Add New Column
+Syntax : ALTER TABLE table_name ADD COLUMNS (col_name data type);
+Example : ALTER TABLE students_details ADD COLUMNS (branch String);
+
+Drop Column
+Syntax : ALTER TABLE table_name DROP [COLUMN] col_name;
+
+Change Column
+ALTER TABLE table_name CHANGE col_name new_name new _type;
+
+4. Drop Table
+DROP TABLE [IF EXISTS] table_name;
+
+
+5. Insert Data in Table
+
+1st Way : Load Data manually
+INSERT INTO table_name (col_name, col_name) VALUES (val_1, val_2);
+
+INSERT INTO table_name VALUES (val_1, val_2);
+INSERT INTO table_name VALUES (val_1, val_2), VALUES (val_1, val_2);
+
+Example : INSERT INTO students_details values (101, "Ram", "NCU", "CS");
+
+2nd Way : Load data from a file
+LOAD DATA LOCAL INPATH 'D:/dataset/data.txt' INTO TABLE table_name;
+
+LOAD DATA LOCAL INPATH 'D:/file_1.txt' INTO TABLE students_details;
+
+3rd Way : Load data from another table
+INSERT INTO table_name SELECT * FROM table_2;
+
+4th Way : Load Data from HDFS
+LOAD DATA INPATH 'hdfs://localhost:9000/input_data/emp.txt' OVERWRITE INTO TABLE employee_2;
+
+6. Select Data From Table
+
+SELECT ALL FROM table_name;
+SELECT col_1, col_2 FROM table_name;
+
+Where Condition
+SELECT ALL FROM table_name WHERE condition;
+
+Example : SELECT * FROM students_details WHERE college = "NCU";
+
+Order By - Sorting Data
+SELECT * FROM students_details ORDER BY col_name;
+SELECT * FROM students_details ORDER BY col_name desc;
+
+
+
+
+
+
+
