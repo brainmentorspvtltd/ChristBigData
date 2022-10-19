@@ -1,0 +1,60 @@
+Download HIVE : https://downloads.apache.org/hive/hive-3.1.3/apache-hive-3.1.3-bin.tar.gz
+Download Derby DB : https://downloads.apache.org//db/derby/db-derby-10.14.2.0/db-derby-10.14.2.0-bin.tar.gz
+Set path in Environment Variables : HIVE_HOME, HIVE_BIN, HIVE_LIB
+Set path for DERBY_HOME
+Set system variable : HADOOP_USER_CLASSPATH_FIRST: “true”
+Copy all files from DERBY_HOME/lib to HIVE_HOME/lib
+Create hive-site.xml inside HIVE_HOME/conf
+We need to copy the hive-default.xml.template file and paste it in the same location and rename it to hive-site.xml.
+Configure hive-site.xml
+
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<configuration><property> <name>javax.jdo.option.ConnectionURL</name> 
+<value>jdbc:derby://localhost:1527/metastore_db;create=true</value> 
+<description>JDBC connect string for a JDBC metastore</description>
+</property><property> 
+<name>javax.jdo.option.ConnectionDriverName</name> 
+<value>org.apache.derby.jdbc.ClientDriver</value> 
+<description>Driver class name for a JDBC metastore</description>
+</property>
+<property> 
+<name>hive.server2.enable.doAs</name> 
+<description>Enable user impersonation for HiveServer2</description>
+<value>true</value>
+</property>
+<property>
+<name>hive.server2.authentication</name> 
+<value>NONE</value>
+<description> Client authentication types. NONE: no authentication check LDAP: LDAP/AD based authentication KERBEROS: Kerberos/GSSAPI authentication CUSTOM: Custom authentication provider (Use with property hive.server2.custom.authentication.class) </description>
+</property>
+<property>
+<name>datanucleus.autoCreateTables</name>
+<value>True</value>
+</property>
+</configuration>
+
+Download all : https://github.com/HadiFadl/Hive-cmd
+Copy and paste files from Hive-cmd-master/bin to HIVE_HOME/bin
+Replace guava-19.0.jar with guava-27.0-jre.jar
+
+Try Executing Hive Now
+- start hadoop
+- open cmd in DB_DERBY_HOME/bin and type : startNetworkServer -h 0.0.0.0
+- open another cmd and type hive
+
+
+Download : https://www.cygwin.com/setup-x86_64.exe
+Install Cygwin for performing some Linux Commands
+Create directory : C:\cygdrive
+Create Symbolic link : mklink /J  C:\cygdrive\c\ C:\
+
+Open Cygwin and enter following commands : 
+export HADOOP_HOME='/cygdrive/c/hadoop-3.3.0'
+export PATH=$PATH:$HADOOP_HOME/bin
+export HIVE_HOME='/cygdrive/c/apache-hive-3.1.3'
+export PATH=$PATH:$HIVE_HOME/bin
+export HADOOP_CLASSPATH=$HADOOP_CLASSPATH:$HIVE_HOME/lib/*.jar
+$HIVE_HOME/bin/schematool -dbType derby -initSchema
+
+hive --service hiveserver2 start
