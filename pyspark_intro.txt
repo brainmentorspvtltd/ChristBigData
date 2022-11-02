@@ -1,0 +1,34 @@
+Batch Processing
+- Hadoop
+
+Real time Processing
+- Spark
+
+Spark
+- Real-time Processing framework
+- Open Source cluster computing framework
+- founded by Apache Foundation
+- programming used by Spark is known as Scala and Java
+- Fault tolerant
+- High Speed framework
+- Cache & Persistence
+
+
+PySpark modules
+- RDD - Resilient Distributed Dataset (abstraction layer in spark)
+- DataFrame and SQL
+- Pyspark Streaming
+- PySpark MLib
+- PySpark GraphFrames
+
+
+
+
+
+
+
+
+
+
+
+
